@@ -1,6 +1,6 @@
 # JSONCOnverter -> JSON Changenote to HTML Converter
 
-![JSONCOnverter](SalesPitch.png)
+![JSONCOnverter](SalesPitch.PNG)
 
 ## Notes/Know Bugs:
 
@@ -18,7 +18,7 @@ Automatic conversion and execution of JSON to HTML
 
 Main Build : 
 
-![JSONCOnverter](SalesPitch.png)
+![JSONCOnverter](SalesPitch.PNG)
 
 
 ## Latest Build
@@ -27,7 +27,7 @@ Main Build :
 
 ## Latest Update Notes:
 
-![JSONCOnverter](SalesPitch.png)
+![JSONCOnverter](SalesPitch.PNG)
 
 Main Build
 
