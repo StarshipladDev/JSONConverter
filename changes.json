@@ -1,0 +1,31 @@
+{
+	"title": "JSONChangeNotesReaderApp",
+	"summary": "Add core program",
+	"updates": [
+		{
+			"date": "06/05/2021",
+			"updateNotes": [
+				{
+					"area": "JSONChangeNotesReaderApp - > Models",
+					"changes": [
+						"Add 3 Models for Deserializing JSON"
+					]
+				},
+				{
+					"area": "JSONChangeNotesReaderApp -> Form1.cs ",
+					"changes": [
+						"Add Methods to Deserialize JSON , convert strings to HTML with inline CSS, and write/execute HTML files for core reason",
+						"Add 'Background.png' to GUI for aesthetics",
+						"Add GUI  500x500 with label stating file location and buttons to select file and convert JSON"
+					]
+				}
+			],
+			"issuesEncountered": {
+				"issue": [
+					"none, went perfectly"
+				]
+			}
+		}
+	],
+	"toDo": [ "Completed for the time being" ]
+}
