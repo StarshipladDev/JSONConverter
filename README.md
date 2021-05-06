@@ -64,9 +64,9 @@ To Sum Up:
 				}
 			],
 			"issuesEncountered": {
-				"issue": {
+				"issue": [
 					"none, went perfectly"
-				}
+				]
 			}
 		}
 	],
@@ -86,15 +86,11 @@ Utility Acheived - No excpected Updates
 
 I planned on this project improving my skills in the following:
 
->Understanding of 3-D representation
+>JSON Parsing
 
->Proof of skill development since ![Gun Run](https://github.com/StarshipladDev/GunRun)
+>HTML writing automation
 
->C# Code practice
-
->Correct SDLC practice
-
->Pixel Art and Animation
+>Lightweight GUI design
 
 ## Installing and Compiling:
 
