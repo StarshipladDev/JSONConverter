@@ -1,4 +1,7 @@
-﻿namespace JSONChangeNotesReaderApp
+﻿using System;
+using System.Drawing;
+
+namespace JSONChangeNotesReaderApp
 {
     partial class Form1
     {
@@ -38,9 +41,8 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Image = ((System.Drawing.Image)new Bitmap("Background.png"));
             this.pictureBox1.ImageLocation = "";
-            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
             this.pictureBox1.Location = new System.Drawing.Point(0, -1);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(486, 464);
@@ -83,6 +85,11 @@
             // 
             // Form1
             // 
+            Bitmap b = new Bitmap("Icon.png");
+            IntPtr pIcon = b.GetHicon();
+            Icon i = Icon.FromHandle(pIcon);
+            this.Icon = i;
+            i.Dispose();
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 461);

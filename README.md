@@ -4,7 +4,7 @@
 
 ## Notes/Know Bugs:
 
-> Files that do not follow the format posted below will crash the application
+> ~~Files that do not follow the format posted below will crash the application~~ - Resolved 15/08/2021
 
 ## Features(Planned In Brackets)
 
@@ -14,64 +14,72 @@ Simple UI
 
 Automatic conversion and execution of JSON to HTML
 
+## Latest Build
+
+*08/05/2021 - Main Build*
+Generic JSON Build :
+
+![Generic JSON Selection](GenericJSON.png)
+
 ## View of progress
+
+Generic JSON Build :
+
+![Generic JSON Selection](GenericJSON.png)
 
 Main Build : 
 
 ![JSONCOnverter](SalesPitch.PNG)
 
 
-## Latest Build
-
-*08/05/2021 - Main Build*
-
 ## Latest Update Notes:
 
-![JSONCOnverter](SalesPitch.PNG)
-
-Main Build
+Generic JSON Build 
 
 
 To Sum Up:
-	Add File-opening functionality.
-	Add JSON reading method.
-	Add HTML conversion method.
-	Add GUI Interface
+	Added the ability to handle generic JSO nfiles without following a deserialized structure
+	
+	Added generic html-formatting utility methods
+	
+	Refracted a lot of code
 
 *THE BELOW CODE CAN BE DOWNLAODED AS A JSON FILE AND RUN WITH ![THIS PROGRAM](https://github.com/StarshipladDev/JSONConverter)*
 
 ```
-	{
-	"title": "JSONChangeNotesReaderApp",
-	"summary": "Add core program",
-	"updates": [
-		{
-			"date": "06/05/2021",
-			"updateNotes": [
-				{
-					"area": "JSONChangeNotesReaderApp - > Models",
-					"changes": [
-						"Add 3 Models for Deserializing JSON"
-					]
-				},
-				{
-					"area": "JSONChangeNotesReaderApp -> Form1.cs ",
-					"changes": [
-						"Add Methods to Deserialize JSON , convert strings to HTML with inline CSS, and write/execute HTML files for core reason",
-						"Add 'Background.png' to GUI for aesthetics",
-						"Add GUI  500x500 with label stating file location and buttons to select file and convert JSON"
-					]
-				}
-			],
-			"issuesEncountered": {
-				"issue": [
-					"none, went perfectly"
-				]
-			}
-		}
-	],
-	"toDo": [ "Completed for the time being" ]
+{
+  "title": "JSONChangeNotesReaderApp",
+  "summary": "Add core program",
+  "Updates": {
+
+    "JSONChangeNotesReaderApp": {
+
+      "CreateWebFromJSON": {
+        "APICallAsync": [
+          "Modified method to use refracted methods (mentioned below) to have cleaner code"
+        ],
+        "AddBackgroundColor / AddColorBig ": [
+          "Added utility features to return html formatted strings so that variosu common-functions of web-drawing can be called easily."
+        ],
+        "FindTokens": [
+          "Added utility methods to loop through generic JSON object, passign the relevant depth recurrsivly to a new 'DIspalyModule'",
+          "This is to allow any depth of JSON object to be drawn/ modifed",
+          
+        ],
+        "class - DisplayModule": [
+          "Add new class to handle drawing of each 'line' This  is to have cleaner/modualr code.",
+          "Modifed constructor to call the relevant utility methods to format the inptu string correctly."
+        ]
+
+      },
+      "Form1.cs": [
+        "Modified reference to 'APICallAsync' from form1.cs to 'JSONChangeNotesReaderApp'"
+      ]
+    }
+  },
+  "toDo": [ "Completed for the time being" ]
 }
+	
 	
 ```
 
@@ -79,7 +87,7 @@ To Sum Up:
 
 ## Next Build ([ ] -Not done , [0] - Half Done , [x] - Done)
 
-Utility Acheived - No excpected Updates
+Utility Acheived - No expected Updates
 
 
 ## Skill developing
@@ -96,6 +104,8 @@ I planned on this project improving my skills in the following:
 
 Download and run 'JSOnConverter.exe' , then press the btton to select a .JSON file.
 
+!!IMPORTANT!! - 'Newtonsoft.Json' must be in the same directory it runs from
+
 Press 'Convert JSON' to convert that file to an HTML page and automatically run it in your PC's browser.
 
 *Please note :*
@@ -103,67 +113,31 @@ Press 'Convert JSON' to convert that file to an HTML page and automatically run 
 JSON files you input must follow the below format (Comments following '#'):
 
 ```
-	{
-		
-	"title": "Title of updates",
-	
-	"summary": "summary of changes",
-	
-	*Each 'updates' element is the changes that occured on the each date*
-	
-	*Sections in '[' ']' brackets are mutable*
-	
-	"updates": [
-		{
-			"date": ["Date 1"],
-			"updateNotes": [
-				{
-					"area": ["System -> Class -> Method"],
-					"changes": [
-						["Cange 1"],
-						["Change 2"],
-					]
-				},
-				{
-					"area": ["System -> Class -> Method"],
-					"changes": [
-						["Cange 1"],
-						["Change 2"],
-						["Change 3"]
-					]
-				}
+{
+	"title": "title", #optional
+	"summary": "Add core program",#optional
+	"TopHeader":{ # You may have unlimited of any header level
+		"Header2":{
+			"Leaf section of content 1":[
+				"changeNote1",
+				"ChangeNote2"
 			],
-			"issuesEncountered": {
-				"issue": [
-					[Issue1"],["Issue2"]
-				]
-			}
+			"Leaf section of content 2":[
+				"changeNote3",
+				"ChangeNote4"
+			]
 		},
-		{
-			"date": ["Date 2"],
-			"updateNotes": [
-				{
-					"area": ["System -> Class -> Method"],
-					"changes": [
-						["Cange 1"],
-						["Change 2"],
-					]
-				},
-				{
-					"area": ["System -> Class -> Method"],
-					"changes": [
-						["Cange 1"],
-					]
-				}
+		"Second Header2":{
+			"Leaf section of content 1":[
+				"changeNote1",
+				"ChangeNote2"
 			],
-			"issuesEncountered": {
-				"issue": [
-					[Issue1"]
-				]
-			}
+			"Leaf section of content 2":[
+				"changeNote3",
+				"ChangeNote4"
+			]
 		}
-	],
-	"toDo": [ ["TODO1"] ,["TODO2"]]
+	}
 }
 	
 ```

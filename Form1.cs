@@ -1,5 +1,4 @@
-﻿using JSONChangeNotesReaderApp.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using TestApplication.Functions;
 
 namespace JSONChangeNotesReaderApp
 {
@@ -133,120 +133,11 @@ namespace JSONChangeNotesReaderApp
             return doc;
 
         }
-
-        /// <summary>
-
-        /// APICallAsync is a test function to JSON reading and parsing
-
-        /// </summary>
-
-        /// <param name="b">The text bix control to be updated if event notification required</param>
-
-        /// <param name="fileLocation">The URI of a JSON file to read. If left blank, will use GetJSONInternet()</param>
-
-        /// <returns></returns>
-
-        public static void APICallAsync(TextBox b, string fileLocation = "")
-
-        {
-
-
-
-            string doc = "";
-
-            if (fileLocation.Equals(""))
-
-            {
-
-                doc = GetJSONInternet();
-
-            }
-
-            else
-
-            {
-
-
-
-                Debug.WriteLine("Reading :" + fileLocation);
-
-                using (StreamReader r = new StreamReader(fileLocation))
-
-                {
-
-                    doc = r.ReadToEnd();
-
-                }
-
-            }
-
-
-
-            Debug.WriteLine("Deserializing  :" + doc);
-
-            UpdateNoteList unl = JsonConvert.DeserializeObject<UpdateNoteList>(doc);
-
-            //unl.updates = JsonConvert.DeserializeObject<List<UpdateNoteNode>>(doc);
-
-            //List<UpdateNotes> updateNotes = JsonConvert.DeserializeObject<List<UpdateNotes>>(doc);
-
-            String htmlFile = "<!DOCTYPE html><html><head><Title>Oscar Test</Title></head><body>";
-
-            Debug.WriteLine(String.Concat(Enumerable.Repeat("-", 20)));
-
-            htmlFile += String.Concat(Enumerable.Repeat("-", 20));
-
-            htmlFile += "<br>" + AddColorBig("Title : ", "green") + unl.title;
-
-            htmlFile += "<br>" + AddColorBig("Summary: ", "green") + unl.summary;
-
-            htmlFile += "<br>";
-
-            for (int z = 0; z < unl.updates.Count; z++)
-
-            {
-
-                htmlFile += "<br><br>" + AddColorBig("Date : ", "blue") + AddColorBig(unl.updates[z].date, "black") + "->";
-
-                for (int f = 0; f < unl.updates[z].updateNotes.Count; f++)
-                {
-                    htmlFile += "<br> &emsp; " + AddColorBig("Area: ", "red", 150) + AddColorBig(unl.updates[z].updateNotes[f].area, "black", 150) + "<br>";
-                    for (int i = 0; i < unl.updates[z].updateNotes[f].changes.Count; i++)
-                    {
-                        htmlFile += "<br> &emsp; &emsp;" + CheckColors(unl.updates[z].updateNotes[f].changes[i]);
-                        htmlFile += "<br>";
-
-                    }
-
-
-
-                    htmlFile += "<br>";
-
-                }
-
-            }
-
-
-            htmlFile += "<br>" + AddColorBig("TODO: ", "red");
-            for (int z = 0; z < unl.updates.Count; z++)
-            {
-                htmlFile += "<br> &emsp; " + unl.toDo[z];
-            }
-
-            htmlFile += "</body></html>";
-
-            System.IO.File.WriteAllText("yoursite.html", htmlFile);
-
-            System.Diagnostics.Process.Start("yoursite.html");
-
-
-
-        }
         void button1_Click(object sender, EventArgs e)
 
         {
             this.label1.Text = "JSON File Location: "+fileLocation;
-            APICallAsync(null, fileLocation);
+            CreateWebFromJSON.APICallAsync(null, fileLocation);
         }
 
         void label1_Click(object sender, EventArgs e)
